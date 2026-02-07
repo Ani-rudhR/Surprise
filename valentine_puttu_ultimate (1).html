@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#ff1744">
+    <title>A Special Moment 💕</title>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(-45deg, #1a0033, #330033, #4d0052, #1a0033, #0f0526);
+            background-size: 400% 400%;
+            animation: dreamyGradient 20s ease infinite;
+            min-height: 100vh;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            overflow-y: auto;
+            position: relative;
+            padding: 20px 10px;
+        }
+
+        @keyframes dreamyGradient {
+            0% { background-position: 0% 50%; }
+            25% { background-position: 100% 50%; }
+            50% { background-position: 100% 100%; }
+            75% { background-position: 0% 100%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Magical particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: particleFloat 8s infinite;
+        }
+
+        @keyframes particleFloat {
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(50px);
+                opacity: 0;
+            }
+        }
+
+        /* Floating roses */
+        .roses {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .rose {
+            position: absolute;
+            font-size: 30px;
+            animation: roseFloat 15s infinite;
+            opacity: 0.6;
+            filter: drop-shadow(0 0 10px rgba(255, 23, 68, 0.8));
+        }
+
+        @keyframes roseFloat {
+            0% {
+                transform: translateY(110vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-10vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Twinkling stars */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            animation: twinkle 4s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% {
+                opacity: 0.3;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.3);
+            }
+        }
+
+        /* Fireflies */
+        .firefly {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #ffe066;
+            border-radius: 50%;
+            box-shadow: 0 0 15px #ffe066, 0 0 30px #ffe066;
+            animation: fireflyMove 10s infinite;
+        }
+
+        @keyframes fireflyMove {
+            0%, 100% {
+                transform: translate(0, 0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translate(100px, -100px);
+                opacity: 0;
+            }
+        }
+
+        /* Container */
+        .container {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(20px);
+            padding: 40px 25px;
+            border-radius: 30px;
+            box-shadow: 0 30px 80px rgba(255, 23, 68, 0.5),
+                        inset 0 0 60px rgba(255, 107, 157, 0.1),
+                        0 0 100px rgba(138, 43, 226, 0.3);
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            z-index: 10;
+            border: 2px solid rgba(255, 107, 157, 0.3);
+            animation: containerGlow 3s ease-in-out infinite;
+            margin: auto;
+        }
+
+        @keyframes containerGlow {
+            0%, 100% {
+                box-shadow: 0 30px 80px rgba(255, 23, 68, 0.5),
+                            inset 0 0 60px rgba(255, 107, 157, 0.1),
+                            0 0 100px rgba(138, 43, 226, 0.3);
+            }
+            50% {
+                box-shadow: 0 30px 80px rgba(255, 23, 68, 0.8),
+                            inset 0 0 60px rgba(255, 107, 157, 0.2),
+                            0 0 120px rgba(138, 43, 226, 0.5);
+            }
+        }
+
+        /* Step 1 - Intro */
+        .step {
+            display: none;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .step.active {
+            display: block;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .main-emoji {
+            font-size: 70px;
+            margin-bottom: 15px;
+            animation: floatEmoji 3s ease-in-out infinite;
+            display: inline-block;
+            filter: drop-shadow(0 0 20px rgba(255, 107, 157, 0.8));
+        }
+
+        @keyframes floatEmoji {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(5deg);
+            }
+        }
+
+        h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.8em;
+            background: linear-gradient(135deg, #ff6b9d 0%, #ffd93d 50%, #ff6b9d 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            font-weight: 700;
+            line-height: 1.2;
+            animation: shimmerText 3s ease-in-out infinite;
+            text-shadow: 0 0 30px rgba(255, 107, 157, 0.5);
+        }
+
+        @keyframes shimmerText {
+            0%, 100% {
+                filter: brightness(1) hue-rotate(0deg);
+            }
+            50% {
+                filter: brightness(1.3) hue-rotate(10deg);
+            }
+        }
+
+        .subtitle {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3em;
+            color: #ffd93d;
+            margin-bottom: 25px;
+            font-weight: 600;
+            text-shadow: 0 0 20px rgba(255, 217, 61, 0.6);
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                text-shadow: 0 0 20px rgba(255, 217, 61, 0.6);
+            }
+            50% {
+                text-shadow: 0 0 30px rgba(255, 217, 61, 1);
+            }
+        }
+
+        .romantic-text {
+            font-size: 1.05em;
+            color: #ffc4e1;
+            margin: 20px 0;
+            line-height: 1.7;
+            font-weight: 300;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .quote {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2em;
+            color: #ffd93d;
+            margin: 25px 0;
+            font-style: italic;
+            font-weight: 600;
+            line-height: 1.6;
+            text-shadow: 0 0 15px rgba(255, 217, 61, 0.5);
+        }
+
+        /* Buttons */
+        button {
+            padding: 15px 40px;
+            font-size: 1.15em;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.4s ease;
+            margin: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        button:active::before {
+            width: 400px;
+            height: 400px;
+        }
+
+        .next-btn, .yes-btn {
+            background: linear-gradient(135deg, #ff1744 0%, #ff6b9d 100%);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            animation: buttonPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes buttonPulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 10px 40px rgba(255, 23, 68, 0.6);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 15px 50px rgba(255, 23, 68, 0.9);
+            }
+        }
+
+        .next-btn:active, .yes-btn:active {
+            transform: scale(0.95) !important;
+        }
+
+        .no-btn {
+            background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .no-btn:active {
+            transform: scale(0.95);
+        }
+
+        .buttons-container {
+            margin-top: 30px;
+            position: relative;
+            min-height: 80px;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Messages */
+        .message {
+            font-size: 1.3em;
+            margin-top: 30px;
+            padding: 25px;
+            border-radius: 25px;
+            display: none;
+            animation: messageAppear 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            font-weight: 600;
+            line-height: 1.6;
+            border: 2px solid;
+        }
+
+        @keyframes messageAppear {
+            0% {
+                opacity: 0;
+                transform: scale(0.5) rotate(-10deg);
+            }
+            70% {
+                transform: scale(1.1) rotate(3deg);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+            }
+        }
+
+        .wrong-choice {
+            background: linear-gradient(135deg, rgba(255, 23, 68, 0.3) 0%, rgba(255, 107, 157, 0.3) 100%);
+            color: #ffc4e1;
+            border-color: #ff6b9d;
+            backdrop-filter: blur(10px);
+            animation: shakeMessage 0.5s, messageAppear 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        @keyframes shakeMessage {
+            0%, 100% { transform: translateX(0) rotate(0deg); }
+            25% { transform: translateX(-15px) rotate(-5deg); }
+            75% { transform: translateX(15px) rotate(5deg); }
+        }
+
+        .success-message {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.3) 0%, rgba(255, 193, 7, 0.3) 100%);
+            color: #ffd93d;
+            border-color: #ffc107;
+            backdrop-filter: blur(10px);
+            font-size: 1.2em;
+        }
+
+        .celebration-text {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.2em;
+            margin-top: 20px;
+            background: linear-gradient(45deg, #ff6b9d, #ffd93d, #ff6b9d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: rainbowShift 3s ease-in-out infinite;
+            font-weight: 700;
+            filter: drop-shadow(0 0 10px rgba(255, 217, 61, 0.5));
+        }
+
+        @keyframes rainbowShift {
+            0%, 100% { filter: hue-rotate(0deg) drop-shadow(0 0 10px rgba(255, 217, 61, 0.5)); }
+            50% { filter: hue-rotate(20deg) drop-shadow(0 0 20px rgba(255, 217, 61, 0.8)); }
+        }
+
+        .love-note {
+            font-size: 1em;
+            color: #ffc4e1;
+            margin-top: 20px;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .animated-hearts {
+            display: none;
+            margin-top: 25px;
+        }
+
+        .big-heart {
+            font-size: 80px;
+            display: inline-block;
+            margin: 0 10px;
+            animation: heartPulse 1.2s ease-in-out infinite;
+            filter: drop-shadow(0 0 20px rgba(255, 107, 157, 1));
+        }
+
+        @keyframes heartPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+        }
+
+        .big-heart:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .big-heart:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        .kannada-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.9em;
+            margin-top: 30px;
+            padding: 25px;
+            background: linear-gradient(135deg, #ff6b9d 0%, #ffd93d 50%, #ff6b9d 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+            line-height: 1.6;
+            display: none;
+            animation: floatIn 2s ease-out forwards;
+            text-shadow: 0 0 30px rgba(255, 107, 157, 0.5);
+        }
+
+        @keyframes floatIn {
+            0% {
+                opacity: 0;
+                transform: translateY(60px) scale(0.7);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .try-again {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.2);
+            color: #ffd93d;
+            border-radius: 25px;
+            font-size: 0.9em;
+            animation: bounce 1.5s infinite;
+            font-weight: 600;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 217, 61, 0.5);
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            body { 
+                padding: 15px 10px;
+            }
+            .container { 
+                padding: 35px 20px;
+                width: 92%;
+                border-radius: 25px;
+            }
+            h1 { 
+                font-size: 2.2em;
+                margin-bottom: 15px;
+            }
+            .subtitle { 
+                font-size: 1.15em;
+                margin-bottom: 20px;
+            }
+            .main-emoji { 
+                font-size: 60px;
+                margin-bottom: 12px;
+            }
+            button { 
+                padding: 14px 32px;
+                font-size: 1em;
+                letter-spacing: 1.5px;
+                margin: 8px;
+            }
+            .romantic-text { 
+                font-size: 0.98em;
+                margin: 18px 0;
+            }
+            .quote { 
+                font-size: 1.1em;
+                margin: 20px 0;
+            }
+            .big-heart { 
+                font-size: 65px;
+                margin: 0 8px;
+            }
+            .kannada-text { 
+                font-size: 1.5em;
+                padding: 20px 15px;
+                margin-top: 25px;
+            }
+            .message {
+                font-size: 1.1em;
+                padding: 20px 15px;
+                margin-top: 25px;
+            }
+            .celebration-text {
+                font-size: 1.8em;
+            }
+            .love-note {
+                font-size: 0.95em;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .container {
+                padding: 30px 18px;
+                width: 94%;
+            }
+            h1 { 
+                font-size: 1.9em;
+            }
+            .subtitle {
+                font-size: 1.05em;
+            }
+            .main-emoji { 
+                font-size: 55px;
+            }
+            button { 
+                padding: 13px 28px;
+                font-size: 0.95em;
+                letter-spacing: 1.2px;
+            }
+            .romantic-text {
+                font-size: 0.92em;
+            }
+            .quote {
+                font-size: 1.05em;
+            }
+            .kannada-text { 
+                font-size: 1.3em;
+                padding: 18px 12px;
+            }
+            .big-heart {
+                font-size: 55px;
+                margin: 0 6px;
+            }
+            .celebration-text {
+                font-size: 1.6em;
+            }
+        }
+
+        @media (min-width: 768px) {
+            body {
+                padding: 30px 20px;
+            }
+            .container { 
+                padding: 50px 45px;
+                max-width: 550px;
+                border-radius: 35px;
+            }
+            h1 {
+                font-size: 3.2em;
+            }
+            .subtitle {
+                font-size: 1.5em;
+            }
+            .main-emoji {
+                font-size: 85px;
+            }
+            button { 
+                padding: 17px 48px;
+                font-size: 1.25em;
+            }
+            .romantic-text {
+                font-size: 1.15em;
+            }
+            .quote {
+                font-size: 1.35em;
+            }
+            .big-heart {
+                font-size: 80px;
+            }
+            .kannada-text {
+                font-size: 1.9em;
+                padding: 25px;
+            }
+            button:hover::before { 
+                width: 400px;
+                height: 400px;
+            }
+            .next-btn:hover, .yes-btn:hover {
+                transform: scale(1.1) !important;
+                animation: none;
+            }
+            .no-btn:hover { 
+                transform: scale(1.05);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .container {
+                max-width: 600px;
+                padding: 55px 50px;
+            }
+            h1 {
+                font-size: 3.5em;
+            }
+            .main-emoji {
+                font-size: 90px;
+            }
+        }
+
+        .fireworks {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+        }
+    </style>
+</head>
+<body>
+    <!-- Particles -->
+    <div class="particles" id="particles"></div>
+    
+    <!-- Stars -->
+    <div class="stars" id="stars"></div>
+    
+    <!-- Roses -->
+    <div class="roses" id="roses"></div>
+    
+    <!-- Fireworks -->
+    <div class="fireworks" id="fireworks"></div>
+    
+    <div class="container">
+        <!-- Step 1: Intro -->
+        <div class="step active" id="step1">
+            <div class="main-emoji">🌹</div>
+            <h1>Hey Puttu...</h1>
+            <p class="subtitle">I have something special to tell you</p>
+            <p class="romantic-text">
+                There's a moment I've been waiting for, a question that's been dancing in my heart...
+            </p>
+            <p class="quote">"Some feelings are too beautiful to keep inside"</p>
+            <button class="next-btn" onclick="goToStep2()">
+                <span style="position: relative; z-index: 1;">Next 💕</span>
+            </button>
+        </div>
+
+        <!-- Step 2: The Question -->
+        <div class="step" id="step2">
+            <div class="main-emoji">💖</div>
+            <h1>Will You Be My Valentine?</h1>
+            <p class="quote">"In a sea of people, my eyes will always search for you"</p>
+            <p class="romantic-text">
+                Every moment with you feels like a dream. You make my world brighter, 
+                my heart lighter, and my life infinitely more beautiful...
+            </p>
+            
+            <div class="buttons-container" id="buttonsContainer">
+                <button class="yes-btn" onclick="handleYes()">
+                    <span style="position: relative; z-index: 1;">Yes! 💕</span>
+                </button>
+                <button class="no-btn" id="noBtn" ontouchstart="runAwayMobile(event)" onmouseover="runAwayDesktop()" onclick="handleNo()">
+                    <span style="position: relative; z-index: 1;">No</span>
+                </button>
+            </div>
+            
+            <div id="message" class="message"></div>
+            <div class="animated-hearts" id="animatedHearts">
+                <div class="big-heart">💕</div>
+                <div class="big-heart">💖</div>
+                <div class="big-heart">💗</div>
+            </div>
+            <div class="kannada-text" id="kannadaText">
+                "Naavu yavatt idru nimmavru<br>neev nammavru"
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let noClickCount = 0;
+        let yesClicked = false;
+        let isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+        // Create magical particles
+        function createParticles() {
+            const container = document.getElementById('particles');
+            setInterval(() => {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.width = (Math.random() * 4 + 2) + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.bottom = '-10px';
+                particle.style.animationDuration = (Math.random() * 5 + 6) + 's';
+                particle.style.animationDelay = Math.random() * 2 + 's';
+                container.appendChild(particle);
+                
+                setTimeout(() => particle.remove(), 11000);
+            }, 300);
+        }
+
+        // Create stars
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            for (let i = 0; i < 150; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.width = Math.random() * 3 + 1 + 'px';
+                star.style.height = star.style.width;
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 4 + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+
+        // Create floating roses
+        function createRoses() {
+            const container = document.getElementById('roses');
+            const roses = ['🌹', '🌺', '🌸', '💐', '🥀', '🏵️'];
+            
+            setInterval(() => {
+                const rose = document.createElement('div');
+                rose.className = 'rose';
+                rose.textContent = roses[Math.floor(Math.random() * roses.length)];
+                rose.style.left = Math.random() * 100 + '%';
+                rose.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                rose.style.fontSize = (Math.random() * 20 + 25) + 'px';
+                container.appendChild(rose);
+                
+                setTimeout(() => rose.remove(), 20000);
+            }, 1200);
+        }
+
+        // Create fireflies
+        function createFireflies() {
+            const container = document.getElementById('particles');
+            setInterval(() => {
+                const firefly = document.createElement('div');
+                firefly.className = 'firefly';
+                firefly.style.left = Math.random() * 100 + '%';
+                firefly.style.top = Math.random() * 100 + '%';
+                firefly.style.animationDuration = (Math.random() * 5 + 8) + 's';
+                firefly.style.animationDelay = Math.random() * 3 + 's';
+                container.appendChild(firefly);
+                
+                setTimeout(() => firefly.remove(), 13000);
+            }, 800);
+        }
+
+        // Go to step 2
+        function goToStep2() {
+            document.getElementById('step1').classList.remove('active');
+            document.getElementById('step2').classList.add('active');
+        }
+
+        // Mobile: Run away on touch
+        function runAwayMobile(event) {
+            if (yesClicked) return;
+            event.preventDefault();
+            
+            const noBtn = document.getElementById('noBtn');
+            const container = document.querySelector('.container');
+            const containerRect = container.getBoundingClientRect();
+            
+            const maxX = containerRect.width - noBtn.offsetWidth - 20;
+            const maxY = 250;
+            
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+            
+            noBtn.style.position = 'absolute';
+            noBtn.style.left = randomX + 'px';
+            noBtn.style.top = randomY + 'px';
+            noBtn.style.transition = 'all 0.3s ease';
+        }
+
+        // Desktop: Run away on hover
+        function runAwayDesktop() {
+            if (yesClicked || isMobile) return;
+            
+            const noBtn = document.getElementById('noBtn');
+            const container = document.querySelector('.container');
+            const containerRect = container.getBoundingClientRect();
+            
+            const maxX = containerRect.width - noBtn.offsetWidth - 40;
+            const maxY = containerRect.height - noBtn.offsetHeight - 40;
+            
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+            
+            noBtn.style.position = 'absolute';
+            noBtn.style.left = randomX + 'px';
+            noBtn.style.top = randomY + 'px';
+            noBtn.style.transition = 'all 0.3s ease';
+        }
+
+        function handleYes() {
+            yesClicked = true;
+            const message = document.getElementById('message');
+            const animatedHearts = document.getElementById('animatedHearts');
+            
+            message.className = 'message success-message';
+            message.style.display = 'block';
+            message.innerHTML = `
+                🎊 YESSSS! You said YES! 🎊<br>
+                <div class="celebration-text">This is the most magical moment ever!</div>
+                <div class="love-note">
+                    Puttu, you've just made me the happiest person alive! I promise to cherish every moment we share, 
+                    to make you smile every day, and to fill our journey with endless love and beautiful memories. 
+                    Together, we'll create our own little paradise! 💕✨
+                </div>
+            `;
+            
+            animatedHearts.style.display = 'block';
+            
+            setTimeout(() => {
+                document.getElementById('kannadaText').style.display = 'block';
+            }, 2500);
+            
+            document.getElementById('buttonsContainer').style.display = 'none';
+            document.querySelector('#step2 .romantic-text').textContent = '💕 Forever grateful for this moment! 💕';
+            
+            // Epic confetti
+            const duration = 7 * 1000;
+            const animationEnd = Date.now() + duration;
+            const defaults = { startVelocity: 35, spread: 360, ticks: 70, zIndex: 10000 };
+
+            function randomInRange(min, max) {
+                return Math.random() * (max - min) + min;
+            }
+
+            const interval = setInterval(function() {
+                const timeLeft = animationEnd - Date.now();
+                if (timeLeft <= 0) return clearInterval(interval);
+
+                const particleCount = 80 * (timeLeft / duration);
+                
+                confetti(Object.assign({}, defaults, {
+                    particleCount,
+                    origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
+                    colors: ['#ff1744', '#ff6b9d', '#ffd93d', '#ff6348', '#8e44ad', '#ffc107']
+                }));
+                
+                confetti(Object.assign({}, defaults, {
+                    particleCount,
+                    origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
+                    colors: ['#ff1744', '#ff6b9d', '#ffd93d', '#ff6348', '#8e44ad', '#ffc107']
+                }));
+                
+                if (timeLeft > duration - 1500) {
+                    confetti(Object.assign({}, defaults, {
+                        particleCount: 120,
+                        origin: { x: 0.5, y: 0.5 },
+                        colors: ['#ff1744', '#ff6b9d', '#ffd93d', '#ff0000']
+                    }));
+                }
+            }, 250);
+
+            createHeartShower();
+        }
+
+        function handleNo() {
+            if (yesClicked) return;
+            
+            noClickCount++;
+            const message = document.getElementById('message');
+            
+            const messages = [
+                "💔 Puttu, my heart just broke a little... But I believe in us! 💪",
+                "🥺 Are you really sure? Think about all the beautiful moments we could share!",
+                "😢 Puttu, please reconsider... The 'Yes' button is glowing for a reason! ✨",
+                "💕 I won't give up on us! Every love story deserves a chance... 🌟",
+                "✨ Puttu, sometimes the best things start with one little 'Yes'! 💖"
+            ];
+            
+            message.className = 'message wrong-choice';
+            message.style.display = 'block';
+            message.innerHTML = messages[Math.min(noClickCount - 1, messages.length - 1)] + 
+                '<div class="try-again">👆 The YES button is calling your name, Puttu!</div>';
+            
+            const yesBtn = document.querySelector('.yes-btn');
+            const currentSize = 1 + (noClickCount * 0.2);
+            yesBtn.style.transform = `scale(${Math.min(currentSize, 1.7)})`;
+        }
+
+        function createHeartShower() {
+            const fireworks = document.getElementById('fireworks');
+            const hearts = ['❤️', '💕', '💖', '💗', '💝', '💘', '💓', '💞', '💟', '♥️', '🌹'];
+            
+            for (let i = 0; i < 100; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.style.position = 'absolute';
+                    heart.style.fontSize = (Math.random() * 40 + 30) + 'px';
+                    heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                    heart.style.left = Math.random() * 100 + '%';
+                    heart.style.top = '-60px';
+                    heart.style.animation = `fall ${Math.random() * 2 + 3}s linear`;
+                    heart.style.filter = 'drop-shadow(0 0 10px rgba(255, 107, 157, 1))';
+                    heart.style.zIndex = '10000';
+                    fireworks.appendChild(heart);
+                    
+                    setTimeout(() => heart.remove(), 5000);
+                }, i * 70);
+            }
+        }
+
+        // Initialize all effects
+        createParticles();
+        createStars();
+        createRoses();
+        createFireflies();
+
+        // Prevent zoom
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function (event) {
+            const now = (new Date()).getTime();
+            if (now - lastTouchEnd <= 300) {
+                event.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
+    </script>
+</body>
+</html>
